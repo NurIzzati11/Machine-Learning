@@ -2,6 +2,27 @@
         
         double[] size = {2104,1600,2400,1416,3000,1985,1543,1427,1380,1494};
         double[] price = {400,330,369,232,540,300,315,199,212,243};
+        
+        System.out.println("for d=3");
+        polynomial3(meanNormalSize(size),d2(meanNormalSize(size)),d3(meanNormalSize(size)));
+        System.out.println();
+        
+        System.out.println("for d=2");
+        polynomial2(meanNormalSize(size),d2(meanNormalSize(size)));
+        System.out.println();
+        
+        System.out.println("for d=1");
+        polynomial1(meanNormalSize(size));
+        System.out.println();
+
+
+        System.out.println("Error value");
+        System.out.println("d=3");
+        errorValue(price,polynomial3(meanNormalSize(size),d2(meanNormalSize(size)),d3(meanNormalSize(size))));
+        System.out.println("d=2");
+        errorValue(price,polynomial2(meanNormalSize(size),d2(meanNormalSize(size))));
+        System.out.println("d=1");
+        errorValue(price,polynomial1(meanNormalSize(size)));
 }
 
 
