@@ -1,0 +1,101 @@
+ public static void main(String[] args) {
+        
+        double[] size = {2104,1600,2400,1416,3000,1985,1543,1427,1380,1494};
+        double[] price = {400,330,369,232,540,300,315,199,212,243};
+}
+
+
+public static ArrayList<Double> meanNormalSize(double[] array){
+        int sizeAve=  1834;
+        int sizeRange= 1584;
+        
+        ArrayList<Double> result=new ArrayList<>();
+        for(int i=0;i<array.length;i++){
+            double res= (array[i] - sizeAve)/sizeRange;
+            result.add(res);
+        }
+        
+        return result;
+           
+    }
+    
+    
+    public static ArrayList<Double> d2(ArrayList<Double> size){
+        ArrayList<Double> d2= new ArrayList<>();
+        for(int i =0; i<size.size();i++){
+            d2.add(size.get(i)*size.get(i));
+        }
+        return d2;
+    }
+    
+    public static ArrayList<Double> d3(ArrayList<Double> size){
+        ArrayList<Double> d3= new ArrayList<>();
+        for(int i =0; i<size.size();i++){
+            d3.add(size.get(i)*size.get(i)*size.get(i));
+        }
+        return d3;
+    }
+    
+    public static ArrayList<Double> polynomial3(ArrayList<Double> d1,ArrayList<Double> d2,ArrayList<Double> d3){
+     int the0= 362;
+     double the1 = 3.4,the2=-22.7,the3=44.8;
+     ArrayList<Double> result= new ArrayList<>();
+     
+        for(int i=0;i<d2.size();i++){
+            double res= the0 + the1*(d1.get(i)) + the2*(d2.get(i)) + the3*(d3.get(i));
+            result.add(round(res, 2));
+        }
+        
+        return result;
+    }
+    
+    public static ArrayList<Double> polynomial2(ArrayList<Double> d1,ArrayList<Double> d2){
+     double the0= 356.3;
+     double the1 = 93.2,the2=-2.96;
+     ArrayList<Double> result= new ArrayList<>();
+     
+        for(int i=0;i<d2.size();i++){
+            double res= the0 + the1*(d1.get(i)) + the2*(d2.get(i));
+            result.add(round(res, 2));
+        }
+        
+        return result;
+     
+    }
+    
+    public static ArrayList<Double> polynomial1(ArrayList<Double> d1){
+     double the0= 358.9;
+     double the1 = 93.5;
+     ArrayList<Double> result= new ArrayList<>();
+     
+        for(int i=0;i<d1.size();i++){
+            double res= the0 + the1*(d1.get(i));
+            result.add(round(res, 2));
+        }
+        
+        return result;
+     
+    }
+
+    public static double round(double value, int places) {
+    if (places < 0) throw new IllegalArgumentException();
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
+}
+    
+    public static void errorValue(double[] size, ArrayList<Double> experimental){
+        double percentageError;
+        double total=0;
+        
+        for(int i=0;i<10;i++){
+            double res= Math. abs(experimental.get(i)-size[i])/size[i];
+            percentageError= res * 100;
+            total+= res;
+            System.out.println(round(percentageError,2));
+        }
+        
+        System.out.println("Total error: " + total);
+    }
