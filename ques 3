@@ -86,12 +86,12 @@ public static ArrayList<Double> meanNormalSize(double[] array){
     return (double) tmp / factor;
 }
     
-    public static void errorValue(double[] size, ArrayList<Double> experimental){
+    public static void errorValue(double[] price, ArrayList<Double> experimental){
         double percentageError;
         double total=0;
         
         for(int i=0;i<10;i++){
-            double res= Math. abs(experimental.get(i)-size[i])/size[i];
+            double res= Math. abs(experimental.get(i)-price[i])/price[i];
             percentageError= res * 100;
             total+= res;
             System.out.println(round(percentageError,2));
